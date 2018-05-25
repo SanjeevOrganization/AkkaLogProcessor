@@ -22,15 +22,11 @@ public class AkkaWordCountTest {
 			String filePath = "D:\\logs";
 			final File workingPathDirectory = new File(filePath);
 			filePath = filePath + File.separator + "fileWordCount.txt";
-			;
 			assertTrue("Path exists", workingPathDirectory.exists());
 			assertTrue("Read Access for path", workingPathDirectory.canRead());
 			assertTrue("Path is directory", workingPathDirectory.isDirectory());
-
 			final File resultFile = new File(filePath);
-
 			assertTrue("Result File exists", resultFile.exists());
-
 			for (final File file : workingPathDirectory.listFiles()) {
 				if (file.getAbsolutePath().equals(filePath))
 					continue;
