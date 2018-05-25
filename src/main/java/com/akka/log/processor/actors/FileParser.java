@@ -153,13 +153,9 @@ public class FileParser extends AbstractActor {
 	}
 	
 	private void writeResultToFile() {
-		final File file = new File(this.fileToParse.getParent() + File.separator + RESULT_FILE_NAME);
 		try {
-			if(!file.exists()) {
-				file.createNewFile();
-			}
 			final String content = this.fileToParse+"="+this.noOfWords;
-			Files.write(Paths.get(file.getAbsolutePath()), content.getBytes());
+			Files.write(Paths.get(this.fileToParse.getParent() + File.separator + RESULT_FILE_NAME), (content+System.lineSeparator()).getBytes(),StandardOpenOption.CREATE,StandardOpenOption.APPEND);
 		}catch(final IOException ioException) {
 			LOGGER.error("Error FileParser : Method writeResultToFile" + ioException);
 		}catch(final Exception exception) {
