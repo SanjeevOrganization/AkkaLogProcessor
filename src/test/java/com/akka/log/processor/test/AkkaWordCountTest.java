@@ -10,7 +10,8 @@ import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+
 
 public class AkkaWordCountTest {
 
