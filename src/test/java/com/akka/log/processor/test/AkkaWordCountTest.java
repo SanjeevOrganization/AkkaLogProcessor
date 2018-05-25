@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Stream;
 
+import org.apache.log4j.lf5.PassingLogRecordFilter;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -39,10 +40,10 @@ public class AkkaWordCountTest {
 					fileContent = new String(Files.readAllBytes(Paths.get(file.getAbsolutePath()))).trim();
 					fileWordCount.put(file.getAbsolutePath(),fileContent.split("\\s+").length);
 				}
-				
 				final Stream<String> resultFileLines = Files.lines(Paths.get(filePath));
-				resultFileLines.forEach(line-> assertEquals(line.split("=")[1], fileWordCount.get(line.split("=")[0])));
-
+				resultFileLines.forEach(line-> {
+				assertEquals(line.split("=")[1], String.valueOf(fileWordCount.get(line.split("=")[0])));
+				});
 		} catch (final Exception exception) {
 			exception.printStackTrace();
 		}
